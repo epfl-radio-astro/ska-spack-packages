@@ -19,6 +19,8 @@ class Cufinufft(MakefilePackage):
     depends_on("cuda")
 
     def edit(self, spec, prefix):
+#        with open("make.inc", "w") as inc:
+#            inc.write("NVCCFLAGS += -allow-unsupported-compiler")
         pass
 
     def install(self, spec, prefix):
