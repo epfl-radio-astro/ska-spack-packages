@@ -13,23 +13,30 @@ class Finufft(MakefilePackage):
     git = "https://github.com/flatironinstitute/finufft.git"
     url = "https://github.com/flatironinstitute/finufft/archive/refs/tags/v2.1.0.tar.gz"
 
+    version("master", branch="master")
     version("2.1.0", sha256="52f25f0ace06a6dd514a29e728ad31e317b76631912bf0bc53cbf06355e24ad7")
-
+    
     depends_on("fftw")
+    depends_on("python@3.6:")
 
     def build(self, spec, prefix):
         make("clean")
-        make("lib")
+        make("test") #make("lib")
+        make("python")
 
     def install(self, spec, prefix):
         install_tree(".", prefix)
 
     def edit(self, spec, prefix):
-        cpu_arch = spec.architecture
+
+        makefile = FileFilter('makefile')
+        makefile.filter(r'install \-e', 'install')
+ 
         config = [
-            "export CFLAGS=\"-O3 -funroll-loops -march=${cpu_arch} -fcx-limited-range -fPIC\""
+            "CXXFLAGS += -DFFTW_PLAN_SAFE"
         ]
 
         with open('make.inc', 'w') as inc:
             for var in config:
                 inc.write('{0}\n'.format(var))
+        
