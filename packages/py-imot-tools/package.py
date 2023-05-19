@@ -13,6 +13,7 @@ class PyImotTools(PythonPackage):
     homepage = "https://github.com/imagingofthings/ImoT_tools"
     git = "https://github.com/imagingofthings/ImoT_tools.git"
 
+    version("master", branch="master")
     version("dev", branch="dev")
 
     depends_on('py-setuptools', type='build')
