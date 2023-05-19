@@ -48,7 +48,7 @@ class PyAstropy(PythonPackage):
     depends_on("py-pyyaml@3.13:", when="@5.1:", type=("build", "run"))
     depends_on("py-pyerfa@2.0:", when="@5.1:", type=("build", "run"))
     depends_on("py-setuptools-scm@6.2:", when="@5.1:", type="build")
-    depends_on("py-cython@0.29.30", when="@5.1:", type="build")
+    depends_on("py-cython@0.29.30:", when="@5.1:", type="build")
     depends_on("py-extension-helpers", when="@5.1:", type="build")
     depends_on("pkgconfig", type="build")
 
