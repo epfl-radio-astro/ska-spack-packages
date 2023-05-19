@@ -22,5 +22,6 @@ class PyDaskMs(PythonPackage):
     depends_on("py-poetry@1.2.2", type=("build", "run"))
     depends_on("py-donfig@0.7.0:", type=("run"))
     depends_on("py-python-casacore", type=("run"))
+    depends_on("py-fsspec@2023.1.0", type=("run"))
 
 
